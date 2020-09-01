@@ -22,7 +22,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5d05d04-d503-4240-b61a-f319ae9dd775" name="Default Changelist" comment="" />
+    <list default="true" id="b5d05d04-d503-4240-b61a-f319ae9dd775" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Top_Secret/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Top_Secret/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Top_Secret/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Top_Secret/MainWindow.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Top_Secret/bin/Debug/netcoreapp3.1/Top_Secret.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Top_Secret/bin/Debug/netcoreapp3.1/Top_Secret.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Top_Secret/bin/Debug/netcoreapp3.1/Top_Secret.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Top_Secret/bin/Debug/netcoreapp3.1/Top_Secret.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Top_Secret/obj/Debug/netcoreapp3.1/MainWindow.baml" beforeDir="false" afterPath="$PROJECT_DIR$/Top_Secret/obj/Debug/netcoreapp3.1/MainWindow.baml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Top_Secret/obj/Debug/netcoreapp3.1/MainWindow.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Top_Secret/obj/Debug/netcoreapp3.1/MainWindow.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Top_Secret/obj/Debug/netcoreapp3.1/Top_Secret.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Top_Secret/obj/Debug/netcoreapp3.1/Top_Secret.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Top_Secret/obj/Debug/netcoreapp3.1/Top_Secret.g.resources" beforeDir="false" afterPath="$PROJECT_DIR$/Top_Secret/obj/Debug/netcoreapp3.1/Top_Secret.g.resources" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Top_Secret/obj/Debug/netcoreapp3.1/Top_Secret.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Top_Secret/obj/Debug/netcoreapp3.1/Top_Secret.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Top_Secret/obj/Debug/netcoreapp3.1/Top_Secret_MarkupCompile.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Top_Secret/obj/Debug/netcoreapp3.1/Top_Secret_MarkupCompile.cache" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,6 +41,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/075F726A-F7C9-4CD7-B5EE-08EF3053B45E/0/Grid.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -48,6 +62,12 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunManager">
     <configuration name="Top_Secret" type="DotNetProject" factoryName=".NET Project">
@@ -77,7 +97,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1598994477112</updated>
-      <workItem from="1598994496568" duration="693000" />
+      <workItem from="1598994496568" duration="2465000" />
     </task>
     <servers />
   </component>
@@ -101,21 +121,21 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1342" height="195" key="GridCell.Tab.0.bottom" timestamp="1598995184931">
+    <state width="1493" height="195" key="GridCell.Tab.0.bottom" timestamp="1598996942158">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1342" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598995184931" />
-    <state width="1342" height="195" key="GridCell.Tab.0.center" timestamp="1598995184931">
+    <state width="1493" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598996942158" />
+    <state width="1493" height="195" key="GridCell.Tab.0.center" timestamp="1598996942158">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1342" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1598995184931" />
-    <state width="1342" height="195" key="GridCell.Tab.0.left" timestamp="1598995184931">
+    <state width="1493" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1598996942158" />
+    <state width="1493" height="195" key="GridCell.Tab.0.left" timestamp="1598996942158">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1342" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1598995184931" />
-    <state width="1342" height="195" key="GridCell.Tab.0.right" timestamp="1598995184931">
+    <state width="1493" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1598996942158" />
+    <state width="1493" height="195" key="GridCell.Tab.0.right" timestamp="1598996942158">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1342" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1598995184931" />
+    <state width="1493" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1598996942158" />
   </component>
 </project>
