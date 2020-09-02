@@ -1,0 +1,9 @@
+D:\University_Anul_3_Semestru_1\Security_Project\Top_Secret\DownloadingManager\bin\Debug\netstandard2.0\DownloadingManager.deps.json
+D:\University_Anul_3_Semestru_1\Security_Project\Top_Secret\DownloadingManager\bin\Debug\netstandard2.0\DownloadingManager.dll
+D:\University_Anul_3_Semestru_1\Security_Project\Top_Secret\DownloadingManager\bin\Debug\netstandard2.0\DownloadingManager.pdb
+D:\University_Anul_3_Semestru_1\Security_Project\Top_Secret\DownloadingManager\obj\Debug\netstandard2.0\DownloadingManager.csprojAssemblyReference.cache
+D:\University_Anul_3_Semestru_1\Security_Project\Top_Secret\DownloadingManager\obj\Debug\netstandard2.0\DownloadingManager.AssemblyInfoInputs.cache
+D:\University_Anul_3_Semestru_1\Security_Project\Top_Secret\DownloadingManager\obj\Debug\netstandard2.0\DownloadingManager.AssemblyInfo.cs
+D:\University_Anul_3_Semestru_1\Security_Project\Top_Secret\DownloadingManager\obj\Debug\netstandard2.0\DownloadingManager.csproj.CoreCompileInputs.cache
+D:\University_Anul_3_Semestru_1\Security_Project\Top_Secret\DownloadingManager\obj\Debug\netstandard2.0\DownloadingManager.dll
+D:\University_Anul_3_Semestru_1\Security_Project\Top_Secret\DownloadingManager\obj\Debug\netstandard2.0\DownloadingManager.pdb

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using DownloadingManager;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +22,29 @@ namespace Top_Secret
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private OperatingSystem OSInfo;
+        PoliciesDownloader policiesDownloader;
+
+
         public MainWindow()
         {
             InitializeComponent();
+            OSInfo = System.Environment.OSVersion;
+            policiesDownloader = new PoliciesDownloader();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (FindName("OS_Information_Text") != null)
+            {
+                
+                TextBlock OSInformationText = FindName("OS_Information_Text") as TextBlock;
+
+                OSInformationText.Text = OSInfo.VersionString;
+                CustomEventController.OnStartDownloading();
+                Debug.WriteLine("Pressed");
+            }
         }
     }
 }

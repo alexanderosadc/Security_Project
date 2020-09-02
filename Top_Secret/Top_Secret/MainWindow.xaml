@@ -6,32 +6,8 @@
         xmlns:local="clr-namespace:Top_Secret"
         mc:Ignorable="d"
         Title="Security Application" Height="350" Width="500">
-        <Grid>
-                <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                
-                <Border Background="#2f5cb6"/>
-                <Border Grid.Row="0" Grid.Column ="0" Background="#1f3d7a"/>
-                <Border Grid.Row="0" Grid.Column="0" Background="#152951"/>
-                
-                <StackPanel Grid.Row="1" Grid.Column="0">
-                        <TextBlock FontSize = "25" Text = "Introduce Name of The File" Width="100" />
-                </StackPanel>
-                
-                <StackPanel Grid.Row="2" Grid.Column="0">
-                        <TextBox Uid="nameOfFileId"></TextBox>
-                </StackPanel>
-                
-                <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center" 
-                            VerticalAlignment="Center">
-                        <Button Uid = "saveButtonId" > Save </Button>
-                </StackPanel>
-        </Grid>
+    <Grid Opacity="0.99">
+        <Button Content="Button" HorizontalAlignment="Center" Margin="0,249,0,0" VerticalAlignment="Center" Height="22" Width="92" Background="White" MinWidth="100" MinHeight="20" MaxWidth="200" MaxHeight="35" UseLayoutRounding="False" BorderThickness="1,1,2,2" ClipToBounds="True" SnapsToDevicePixels="True" Click="Button_Click"/>
+        <TextBlock x:Name="OS_Information_Text" HorizontalAlignment="Center" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Center" Height="69" Width="212"/>
+    </Grid>
 </Window>
