@@ -1,23 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-
+﻿
 namespace DownloadingManager
 {
     public static class CustomEventController
     {
-        public delegate void StartingDownloadEventHandler(string message);
+       /* public delegate void StartingDownloadEventHandler(string message);
 
-        public static event StartingDownloadEventHandler downloadEvent;
+        public static event StartingDownloadEventHandler DownloadEvent;
 
         public static void OnStartDownloading()
         {
-            if(downloadEvent != null)
-            {
-                downloadEvent("Download");
-            }
-        }
-
+            DownloadEvent?.Invoke("Download");
+        }*/
     }
 }
