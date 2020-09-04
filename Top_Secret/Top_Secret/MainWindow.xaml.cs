@@ -1,5 +1,4 @@
-﻿using DownloadingManager;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,17 +10,17 @@ namespace Top_Secret
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        //secedit.exe /configure /db %windir%\security\local.sdb /cfg D:\security-policy.inf
         private readonly OperatingSystem OSInfo;
-        private Policy localPolicy;
-        private Policy webPolicy;
+        private readonly Policy localPolicy;
+        private readonly Policy webPolicy;
 
         public MainWindow()
         {
             InitializeComponent();
             OSInfo = System.Environment.OSVersion;
             localPolicy = new Policy(PolicySource.localMachine);
-            webPolicy = new Policy(PolicySource.web);
+            webPolicy = new Policy(PolicySource.webServer);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
