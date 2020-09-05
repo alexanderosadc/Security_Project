@@ -29,7 +29,6 @@ namespace Top_Secret
             {
                 TextBlock OSInformationText = FindName("OS_Information_Text") as TextBlock;
                 OSInformationText.Text = OSInfo.VersionString;
-                Debug.WriteLine("Pressed");
             }
 
             if (localPolicy != null)

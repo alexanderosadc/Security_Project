@@ -29,7 +29,7 @@ namespace Top_Secret
             if(policySource == PolicySource.localMachine)
             {
                 ExtractLocalPolicy();
-                WriteLocalMachinePoliciesToTable();
+                WritePoliciesToTable();
             }
             else if(policySource == PolicySource.webServer)
             {
@@ -39,7 +39,6 @@ namespace Top_Secret
         
         private void ExtractLocalPolicy()
         {
-
             Process process = new Process();
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
@@ -50,17 +49,16 @@ namespace Top_Secret
             };
 
             process.StartInfo = startInfo;
-            Debug.WriteLine(startInfo.Arguments);
 
             process.Start();
-
             process.WaitForExit();
             process.Close();
         }
 
         private void ExtractPolicyFromWeb()
         {
-           // string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            //https://www.irs.gov/privacy-disclosure/nessus-audit-files
+            // string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string urlToSite = "https://www.irs.gov/pub/irs-utl/Safeguards%20Windows%2010%20Audit%20File%20v1.2.audit";
             WebClient webClient = new WebClient();
 
@@ -81,10 +79,28 @@ namespace Top_Secret
             Debug.WriteLine("Download completed!");
         }
 
-        private void WriteLocalMachinePoliciesToTable()
+        private void WritePoliciesToTable()
         {
-            string localPoliciesText = System.IO.File.ReadAllText(pathToThePolicyFile);
-            
+            int positionOfTheEqualsSign;
+            string line;
+            string key;
+            string value;
+
+            policiesFromFile = new Dictionary<string, string>();
+            System.IO.StreamReader file = new System.IO.StreamReader(pathToThePolicyFile);
+
+            while((line = file.ReadLine()) != null)
+            {
+                if (line.Contains('='))
+                {
+                    positionOfTheEqualsSign = line.IndexOf('=');
+                    key = line.Substring(0, positionOfTheEqualsSign);
+                    value = line.Substring(positionOfTheEqualsSign, line.LastIndexOf(line));
+                    policiesFromFile.Add(key, value);
+                }
+            }
+            file.Close();
+            file.Dispose();
         }
     }
 }
