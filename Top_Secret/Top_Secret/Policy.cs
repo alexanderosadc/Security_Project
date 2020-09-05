@@ -35,6 +35,7 @@ namespace Top_Secret
             {
                 ExtractPolicyFromWeb();
             }
+            
         }
         
         private void ExtractLocalPolicy()
@@ -58,25 +59,15 @@ namespace Top_Secret
         private void ExtractPolicyFromWeb()
         {
             //https://www.irs.gov/privacy-disclosure/nessus-audit-files
-            // string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string urlToSite = "https://www.irs.gov/pub/irs-utl/Safeguards%20Windows%2010%20Audit%20File%20v1.2.audit";
             WebClient webClient = new WebClient();
 
-            webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(Completed);
-            webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
-            webClient.DownloadFileAsync(new Uri(urlToSite), pathToThePolicyFile);
+            //webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(Completed);
+            //webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
+            webClient.DownloadFile(new Uri(urlToSite), pathToThePolicyFile);
 
-            webClient.Dispose();
-        }
-
-        private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-           // Debug.WriteLine(e.ProgressPercentage);
-        }
-
-        private void Completed(object sender, AsyncCompletedEventArgs e)
-        {
-            Debug.WriteLine("Download completed!");
+            
+            //webClient.Dispose();
         }
 
         private void WritePoliciesToTable()
@@ -101,6 +92,11 @@ namespace Top_Secret
             }
             file.Close();
             file.Dispose();
+        }
+
+        public string ReturnPathToThePolicy()
+        {
+            return pathToThePolicyFile;
         }
     }
 }

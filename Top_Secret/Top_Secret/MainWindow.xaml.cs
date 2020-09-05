@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -14,6 +13,8 @@ namespace Top_Secret
         private readonly OperatingSystem OSInfo;
         private readonly Policy localPolicy;
         private readonly Policy webPolicy;
+        private readonly XmlParser xmlParser;
+        private string policyText;
 
         public MainWindow()
         {
@@ -21,6 +22,7 @@ namespace Top_Secret
             OSInfo = System.Environment.OSVersion;
             localPolicy = new Policy(PolicySource.localMachine);
             webPolicy = new Policy(PolicySource.webServer);
+            xmlParser = new XmlParser();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -39,6 +41,8 @@ namespace Top_Secret
             if(webPolicy != null)
             {
                 webPolicy.UpdatePolicy();
+                policyText = webPolicy.ReturnPathToThePolicy();
+                xmlParser.Parse(policyText);
             }
         }
     }
