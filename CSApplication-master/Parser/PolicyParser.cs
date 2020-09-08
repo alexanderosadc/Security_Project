@@ -13,6 +13,7 @@ namespace PoliciesManager.Parser
         private int _index = 0;
         private string json;
         private readonly string pathToJson;
+        private string textToShow;
 
         public PolicyParser()
         {
@@ -77,6 +78,7 @@ namespace PoliciesManager.Parser
                     try
                     {
                         DictionaryInsider.Add(nw.first, nw.second);
+                        textToShow += nw.first + " : " + nw.second + "\n";
                     }
                     catch
                     {
@@ -101,7 +103,6 @@ namespace PoliciesManager.Parser
 
 
             File.WriteAllText(pathToJson, json);
-
         }
 
 
@@ -115,5 +116,9 @@ namespace PoliciesManager.Parser
             return text;
         }
 
+        public string GetJson()
+        {
+            return textToShow;
+        }
     }
 }
