@@ -16,7 +16,7 @@ namespace PoliciesManager.Scraper
             EventManager.EventManager.startDownloading += DownlaodPolicies;
         }
 
-        public void DownlaodPolicies(EventArgs args)
+        void DownlaodPolicies(EventArgs args)
         {
             //HttpClient httpClient = new HttpClient();
             //data = httpClient.GetStringAsync(requestUri: url).Result;
