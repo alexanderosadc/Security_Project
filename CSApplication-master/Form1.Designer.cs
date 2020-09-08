@@ -28,21 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.consoleOutput = new MaterialSkin.Controls.MaterialLabel();
             this.checkButton = new MaterialSkin.Controls.MaterialFlatButton();
             this.applyButton = new MaterialSkin.Controls.MaterialFlatButton();
+            this.consoleOutput = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
-            // 
-            // consoleOutput
-            // 
-            this.consoleOutput.Depth = 0;
-            this.consoleOutput.Font = new System.Drawing.Font("Roboto", 11F);
-            this.consoleOutput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.consoleOutput.Location = new System.Drawing.Point(12, 290);
-            this.consoleOutput.MouseState = MaterialSkin.MouseState.HOVER;
-            this.consoleOutput.Name = "consoleOutput";
-            this.consoleOutput.Size = new System.Drawing.Size(426, 99);
-            this.consoleOutput.TabIndex = 0;
             // 
             // checkButton
             // 
@@ -71,7 +60,7 @@
             this.applyButton.AutoSize = true;
             this.applyButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.applyButton.Depth = 0;
-            this.applyButton.Location = new System.Drawing.Point(369, 399);
+            this.applyButton.Location = new System.Drawing.Point(436, 399);
             this.applyButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.applyButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.applyButton.Name = "applyButton";
@@ -81,14 +70,22 @@
             this.applyButton.Text = "Apply";
             this.applyButton.UseVisualStyleBackColor = true;
             // 
+            // consoleOutput
+            // 
+            this.consoleOutput.Location = new System.Drawing.Point(12, 192);
+            this.consoleOutput.Name = "consoleOutput";
+            this.consoleOutput.Size = new System.Drawing.Size(491, 198);
+            this.consoleOutput.TabIndex = 2;
+            this.consoleOutput.Text = "";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 450);
+            this.ClientSize = new System.Drawing.Size(515, 450);
+            this.Controls.Add(this.consoleOutput);
             this.Controls.Add(this.applyButton);
             this.Controls.Add(this.checkButton);
-            this.Controls.Add(this.consoleOutput);
             this.Name = "Form1";
             this.Sizable = false;
             this.Text = "Top Secret";
@@ -98,9 +95,8 @@
         }
 
         #endregion
-
-        private MaterialSkin.Controls.MaterialLabel consoleOutput;
         private MaterialSkin.Controls.MaterialFlatButton checkButton;
         private MaterialSkin.Controls.MaterialFlatButton applyButton;
+        private System.Windows.Forms.RichTextBox consoleOutput;
     }
 }

@@ -22,7 +22,7 @@ namespace PoliciesManager
 
         private void checkButton_Click(object sender, EventArgs e)
         {
-            EventManager.EventManager.OnStartDownloading();    
+            EventManager.EventManager.OnStartDownloading();
         }
 
         private void FinishDownload(EventArgs e)
@@ -32,12 +32,12 @@ namespace PoliciesManager
             string brutPolicies = policies.GetData();
             dataClass.CustomItemRegex(brutPolicies);
             Debug.WriteLine("Finished");
-            consoleOutput.Text += "\nFinished";
+            consoleOutput.Text = dataClass.GetJson();
         }
 
         private void Downloading(int progress)
         {
-            consoleOutput.Text += "..";
+            Debug.Write("..");
         }
     }
 }
