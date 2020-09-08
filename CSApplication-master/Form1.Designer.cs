@@ -86,6 +86,7 @@
             this.Controls.Add(this.consoleOutput);
             this.Controls.Add(this.applyButton);
             this.Controls.Add(this.checkButton);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Sizable = false;
             this.Text = "Top Secret";

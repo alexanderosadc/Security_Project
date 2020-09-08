@@ -45,8 +45,6 @@ namespace PoliciesManager.Parser
 
             List<string> listOfFirst = new List<string>();
             List<string> listOfSecond = new List<string>();
-        //string data = GetData();
-        //string data = TextData();
 
             data = ClearStringData(data);
 

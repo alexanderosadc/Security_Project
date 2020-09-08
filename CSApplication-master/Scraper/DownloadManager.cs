@@ -1,8 +1,6 @@
 ﻿using PoliciesManager.EventManager;
 using System;
-using System.Diagnostics;
 using System.Net;
-using System.Net.Http;
 
 namespace PoliciesManager.Scraper
 {
@@ -13,7 +11,7 @@ namespace PoliciesManager.Scraper
 
         public DownloadManager()
         {
-            EventManager.EventManager.startDownloading += DownlaodPolicies;
+            EventManager.EventManager.StartDownloading += DownlaodPolicies;
         }
 
         void DownlaodPolicies(EventArgs args)

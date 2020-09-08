@@ -9,15 +9,14 @@ namespace PoliciesManager
 {
     public partial class Form1 : MaterialSkin.Controls.MaterialForm
     {
-        MaterialLabel materialLabel;
-        DownloadManager policies;
+        private DownloadManager policies;
         public Form1()
         {
             InitializeComponent();
             
             policies = new DownloadManager();
-            EventManager.EventManager.downloadingInProgress += Downloading;
-            EventManager.EventManager.finishDownloading += FinishDownload;
+            EventManager.EventManager.DownloadingInProgress += Downloading;
+            EventManager.EventManager.FinishDownloading += FinishDownload;
         }
 
         private void checkButton_Click(object sender, EventArgs e)

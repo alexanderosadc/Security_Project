@@ -9,31 +9,31 @@ namespace PoliciesManager.EventManager
         public delegate void FinishDownloadEventHandler(EventArgs args);
         public delegate void InProgressDownloadEventHanled(int progress);
 
-        public static event StartingDownloadEventHandler startDownloading;
-        public static event FinishDownloadEventHandler finishDownloading;
-        public static event InProgressDownloadEventHanled downloadingInProgress;
+        public static event StartingDownloadEventHandler StartDownloading;
+        public static event FinishDownloadEventHandler FinishDownloading;
+        public static event InProgressDownloadEventHanled DownloadingInProgress;
 
         public static void OnFinishDownloading()
         {
-            if(finishDownloading != null)
+            if(FinishDownloading != null)
             {
-                finishDownloading(EventArgs.Empty);
+                FinishDownloading(EventArgs.Empty);
             }
         }
 
         public static void OnStartDownloading()
         {
-            if (startDownloading != null)
+            if (StartDownloading != null)
             {
-                startDownloading(EventArgs.Empty);
+                StartDownloading(EventArgs.Empty);
             }
         }
 
         public static void OnDownloading(int progress)
         {
-            if(downloadingInProgress != null)
+            if(DownloadingInProgress != null)
             {
-                downloadingInProgress(progress);
+                DownloadingInProgress(progress);
             }
         }
     }
