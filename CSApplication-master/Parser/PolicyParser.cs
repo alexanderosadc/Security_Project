@@ -20,31 +20,25 @@ namespace PoliciesManager.Parser
             pathToJson = AppDomain.CurrentDomain.BaseDirectory + "Policies.json";
         }
 
-        private string TextData()
-        {
-            string text = System.IO.File.ReadAllText(pathToJson);
-
-
-            text = text.Replace("\n", "\n    ").Replace("\r", "\r    ").Replace("\"", " ");
-
-            Regex regex = new Regex("[ ]{2,}", RegexOptions.Singleline);
-            text = regex.Replace(text, " ");
-
-            return text;
-        }
-
-
         public void CustomItemRegex(string data)
         {
-            Regex customItem = new Regex("(?<=<custom_item>)[^>]+(?=</custom_item>)");
-            Regex beforeTwo = new Regex(@"^.*?(?=:)", RegexOptions.Multiline);
-            Regex afterTwo = new Regex(@"(?<=:)(.+)", RegexOptions.Multiline);
-            Regex betweenSpaces = new Regex(@"(.+)", RegexOptions.Multiline);
+            var customItem = new Regex("(?<=<custom_item>)[^>]+(?=</custom_item>)");
+            var beforeTwo = new Regex(@"^.*?(?=:)", RegexOptions.Multiline);
+            var afterTwo = new Regex(@"(?<=:)(.+)", RegexOptions.Multiline);
+            var betweenSpaces = new Regex(@"(.+)", RegexOptions.Multiline);
             string firstElement;
             string secondElement;
+            string stringIndexer;
+            string dictionaryToString;
+            string lineString;
+
 
             List<string> listOfFirst = new List<string>();
             List<string> listOfSecond = new List<string>();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 39094b9179173b736f8f103433da4c7c4be3ed83
 
             data = ClearStringData(data);
 
@@ -56,7 +50,7 @@ namespace PoliciesManager.Parser
                 foreach (Match customLine in betweenSpaces.Matches(CustomItem.Value))
                 {
 
-                    string lineString = customLine.Value;
+                    lineString = customLine.Value;
 
                     lineString = lineString.Replace("\n", "").Replace("\r", "");
 
@@ -94,9 +88,12 @@ namespace PoliciesManager.Parser
 
                     }
                 }
-                string _stringIndexer = JsonConvert.SerializeObject(string.Format("{0}", _index));
 
-                json += _stringIndexer + " : " + JsonConvert.SerializeObject(DictionaryInsider) + ",";
+                textToShow += "\n";
+                stringIndexer = JsonConvert.SerializeObject(string.Format("{0}", _index));
+                dictionaryToString = JsonConvert.SerializeObject(DictionaryInsider);
+
+                json += stringIndexer + " : " + dictionaryToString + ",";
 
                 _index += 1;
 
@@ -112,6 +109,7 @@ namespace PoliciesManager.Parser
 
             File.WriteAllText(pathToJson, json);
         }
+
 
         private string ClearStringData(string text)
         {

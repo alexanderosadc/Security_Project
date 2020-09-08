@@ -13,14 +13,13 @@ namespace PoliciesManager.Scraper
         {
             EventManager.EventManager.StartDownloading += DownlaodPolicies;
         }
-
-        void DownlaodPolicies(EventArgs args)
+        public string GetData()
         {
-            //HttpClient httpClient = new HttpClient();
-            //data = httpClient.GetStringAsync(requestUri: url).Result;
-            
-
-            WebClient webClient = new WebClient();
+            return data;
+        }
+        private void DownlaodPolicies(EventArgs args)
+        {
+           WebClient webClient = new WebClient();
             Uri uri = new Uri(url);
 
             webClient.DownloadProgressChanged += Downloading;
@@ -39,9 +38,5 @@ namespace PoliciesManager.Scraper
             EventManager.EventManager.OnFinishDownloading();
         }
 
-        public string GetData()
-        {
-            return data;
-        }
     }
 }
