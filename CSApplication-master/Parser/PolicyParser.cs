@@ -85,6 +85,8 @@ namespace PoliciesManager.Parser
 
                     }
                 }
+
+                textToShow += "\n";
                 stringIndexer = JsonConvert.SerializeObject(string.Format("{0}", _index));
                 dictionaryToString = JsonConvert.SerializeObject(DictionaryInsider);
 
