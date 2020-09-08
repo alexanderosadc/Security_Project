@@ -1,24 +1,12 @@
-﻿using PoliciesManager.Parser;
-using PoliciesManager.Scraper;
-using System;
+﻿using System.Windows.Forms;
 
 namespace PoliciesManager
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            var policies = new DownloadManager();
-            var brutPolicies = policies.DownlaodPolicies();
-
-
-            PolicyParser dataClass = new PolicyParser();
-
-            dataClass.CustomItemRegex(brutPolicies);
-
-            Console.WriteLine("Finished");
-            Console.ReadLine();
-
+            Application.Run(new Form1());
         }
     }
 }

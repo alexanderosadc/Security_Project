@@ -1,20 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using PoliciesManager.EventManager;
+using System;
+using System.Diagnostics;
+using System.Net;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PoliciesManager.Scraper
 {
-    class DownloadManager
+    public class DownloadManager
     {
-        public string DownlaodPolicies()
+        private readonly string url = "https://www.irs.gov/pub/irs-utl/Safeguards%20Windows%2010%20Audit%20File%20v1.2.audit";
+        private string data;
+
+        public DownloadManager()
         {
-            var httpClient = new HttpClient();
+            EventManager.EventManager.startDownloading += DownlaodPolicies;
+        }
 
-            var data = httpClient.GetStringAsync("https://www.irs.gov/pub/irs-utl/Safeguards%20Windows%2010%20Audit%20File%20v1.2.audit").Result;
+        public void DownlaodPolicies(EventArgs args)
+        {
+            //HttpClient httpClient = new HttpClient();
+            //data = httpClient.GetStringAsync(requestUri: url).Result;
+            
 
+            WebClient webClient = new WebClient();
+            Uri uri = new Uri(url);
+
+            webClient.DownloadProgressChanged += Downloading;
+            webClient.DownloadStringCompleted += DownloadStringComplete;
+            webClient.DownloadStringAsync(uri);
+        }
+
+        private void Downloading(object sender, DownloadProgressChangedEventArgs e)
+        {
+            EventManager.EventManager.OnDownloading(e.ProgressPercentage);
+        }
+
+        private void DownloadStringComplete(object sender, DownloadStringCompletedEventArgs e)
+        {
+            data = e.Result.ToString();
+            EventManager.EventManager.OnFinishDownloading();
+        }
+
+        public string GetData()
+        {
             return data;
         }
     }
