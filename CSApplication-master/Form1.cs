@@ -37,12 +37,10 @@ namespace PoliciesManager
 
             foreach (var key in items.Keys)
             {
-                Debug.WriteLine(items[key].Keys);
                 foreach (var element in items[key])
                 {
                     int i = 0;
-                    Console.WriteLine("helo");
-                    Debug.WriteLine(element.Key);
+
                     ElementsListBox.Items.Insert(i, element.Key);
                     i++;
                 }
