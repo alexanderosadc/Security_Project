@@ -11,38 +11,43 @@ namespace PoliciesManager
     public partial class Form1 : MaterialSkin.Controls.MaterialForm
     {
         private DownloadManager policies;
+        PolicyParser dataClass;
         public Form1()
         {
             InitializeComponent();
-            
+
+            dataClass = new PolicyParser();
             policies = new DownloadManager();
             EventManager.EventManager.DownloadingInProgress += Downloading;
             EventManager.EventManager.FinishDownloading += FinishDownload;
+            EventManager.EventManager.OnStartDownloading();
+
         }
 
         private void checkButton_Click(object sender, EventArgs e)
         {
-            EventManager.EventManager.OnStartDownloading();
+            //EventManager.EventManager.OnStartDownloading();
+            consoleOutput.Text = dataClass.GetJson();
+            Dictionary<string, string> items = dataClass.GetListOfItems();
+            Debug.WriteLine("Pidar" + items.Count);
+            foreach (KeyValuePair<string, string> element in items)
+            {
+                int i = 0;
+
+                ElementsListBox.Items.Insert(i, element.Key);
+                i++;
+            }
         }
 
         private void FinishDownload(EventArgs e)
         {
-            PolicyParser dataClass = new PolicyParser();
+            
 
             string brutPolicies = policies.GetData();
             dataClass.CustomItemRegex(brutPolicies);
             Debug.WriteLine("Finished");
-            consoleOutput.Text = dataClass.GetJson();
-
-           Dictionary<string, string> items = dataClass.GetListOfItems();
-            Debug.WriteLine("Pidor" + items.Count);
-            foreach (KeyValuePair<string, string> element in items)
-            {
-                int i = 0;
-                
-                ElementsListBox.Items.Insert(i, element.Key);
-                i++;
-            }
+            
+         
 
         }
 
