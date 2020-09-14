@@ -1,5 +1,6 @@
 ﻿using PoliciesManager.EventManager;
 using System;
+using System.Diagnostics;
 using System.Net;
 
 namespace PoliciesManager.Scraper

@@ -2,6 +2,7 @@
 using PoliciesManager.Parser;
 using PoliciesManager.Scraper;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 
@@ -32,11 +33,27 @@ namespace PoliciesManager
             dataClass.CustomItemRegex(brutPolicies);
             Debug.WriteLine("Finished");
             consoleOutput.Text = dataClass.GetJson();
+
+           Dictionary<string, string> items = dataClass.GetListOfItems();
+            Debug.WriteLine("Pidor" + items.Count);
+            foreach (KeyValuePair<string, string> element in items)
+            {
+                int i = 0;
+                
+                ElementsListBox.Items.Insert(i, element.Key);
+                i++;
+            }
+
         }
 
         private void Downloading(int progress)
         {
             Debug.Write("..");
+        }
+
+        private void applyButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

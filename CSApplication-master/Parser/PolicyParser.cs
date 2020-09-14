@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -9,7 +10,7 @@ namespace PoliciesManager.Parser
 {
     public class PolicyParser
     {
-        private readonly Dictionary<string, string> DictionaryInsider = new Dictionary<string, string>();
+        Dictionary<string, string> elementsFromPolicy = new Dictionary<string, string>();
         private int _index = 0;
         private string json;
         private readonly string pathToJson;
@@ -33,12 +34,9 @@ namespace PoliciesManager.Parser
             string lineString;
 
 
-            List<string> listOfFirst = new List<string>();
-            List<string> listOfSecond = new List<string>();
-<<<<<<< HEAD
-=======
-
->>>>>>> 39094b9179173b736f8f103433da4c7c4be3ed83
+            List<String> listOfFirst = new List<string>();
+            List<String> listOfSecond = new List<string>();
+            Dictionary<string, string> DictionaryInsider = new Dictionary<string, string>();
 
             data = ClearStringData(data);
 
@@ -46,7 +44,8 @@ namespace PoliciesManager.Parser
 
             foreach (Match CustomItem in customItem.Matches(data))
             {
-
+                string valueType = "";
+                string valueData = "";
                 foreach (Match customLine in betweenSpaces.Matches(CustomItem.Value))
                 {
 
@@ -64,6 +63,15 @@ namespace PoliciesManager.Parser
                     {
                         firstElement = beforeTwo.Matches(lineString)[0].ToString();
                         secondElement = afterTwo.Matches(lineString)[0].ToString();
+                        if(firstElement == " value_type ")
+                        {
+                            valueType = secondElement;
+                            
+                        }
+                        else if(firstElement == " value_data ")
+                        {
+                            valueData = secondElement;
+                        }
 
                         listOfFirst.Add(firstElement);
                         listOfSecond.Add(secondElement);
@@ -72,6 +80,12 @@ namespace PoliciesManager.Parser
                     {
                         listOfSecond[listOfSecond.Count - 1] += lineString;
                     }
+                }
+
+                if (valueData != "" || valueType != "")
+                {
+                    if (!elementsFromPolicy.ContainsKey(valueType))
+                        elementsFromPolicy.Add(valueType, valueData);
                 }
 
                 var numbersAndWords = listOfFirst.Zip(listOfSecond, (n, w) => new { first = n, second = w });
@@ -124,6 +138,11 @@ namespace PoliciesManager.Parser
         public string GetJson()
         {
             return textToShow;
+        }
+        
+        public Dictionary<string, string> GetListOfItems()
+        {
+            return elementsFromPolicy;
         }
     }
 }
