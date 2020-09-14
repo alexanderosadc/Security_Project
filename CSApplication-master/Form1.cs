@@ -11,12 +11,12 @@ namespace PoliciesManager
     public partial class Form1 : MaterialSkin.Controls.MaterialForm
     {
         private DownloadManager policies;
-        PolicyParser dataClass;
+        PolicyController dataClass;
         public Form1()
         {
             InitializeComponent();
 
-            dataClass = new PolicyParser();
+            dataClass = new PolicyController();
             policies = new DownloadManager();
             EventManager.EventManager.DownloadingInProgress += Downloading;
             EventManager.EventManager.FinishDownloading += FinishDownload;
@@ -27,15 +27,25 @@ namespace PoliciesManager
         private void checkButton_Click(object sender, EventArgs e)
         {
             //EventManager.EventManager.OnStartDownloading();
-            consoleOutput.Text = dataClass.GetJson();
-            Dictionary<string, string> items = dataClass.GetListOfItems();
-            Debug.WriteLine("Pidar" + items.Count);
-            foreach (KeyValuePair<string, string> element in items)
-            {
-                int i = 0;
 
-                ElementsListBox.Items.Insert(i, element.Key);
-                i++;
+            //dataClass.PolicySearch();
+            string input = "PASSWORD";
+            consoleOutput.Text = dataClass.GetJson();
+            Dictionary<int, Dictionary<string, string>> items = dataClass.PolicySearch(input);
+
+            Debug.WriteLine("Pidar" + items.Count);
+
+            foreach (var key in items.Keys)
+            {
+                Debug.WriteLine(items[key].Keys);
+                foreach (var element in items[key])
+                {
+                    int i = 0;
+                    Console.WriteLine("helo");
+                    Debug.WriteLine(element.Key);
+                    ElementsListBox.Items.Insert(i, element.Key);
+                    i++;
+                }
             }
         }
 
