@@ -11,10 +11,12 @@ namespace PoliciesManager
     public partial class Form1 : MaterialForm
     {
         private DownloadManager policies;
+        PolicyController dataClass;
         public Form1()
         {
             InitializeComponent();
-            
+            dataClass = new PolicyController();
+
             policies = new DownloadManager();
             EventManager.EventManager.DownloadingInProgress += Downloading;
             EventManager.EventManager.FinishDownloading += FinishDownload;
@@ -28,7 +30,7 @@ namespace PoliciesManager
 
         private void FinishDownload(EventArgs e)
         {
-            PolicyController dataClass = new PolicyController();
+           
 
             string brutPolicies = policies.GetData();
             dataClass.CustomItemRegex(brutPolicies);
