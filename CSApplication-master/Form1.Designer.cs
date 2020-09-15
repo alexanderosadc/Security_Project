@@ -115,6 +115,7 @@
             this.SaveButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.SaveButton.UseAccentColor = false;
             this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // SaveAsButton
             // 

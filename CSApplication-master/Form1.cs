@@ -1,4 +1,5 @@
 ﻿using MaterialSkin.Controls;
+using PoliciesManager.Global;
 using PoliciesManager.Parser;
 using PoliciesManager.Scraper;
 using System;
@@ -15,7 +16,7 @@ namespace PoliciesManager
         public Form1()
         {
             InitializeComponent();
-            dataClass = new PolicyController();
+            
 
             policies = new DownloadManager();
             EventManager.EventManager.DownloadingInProgress += Downloading;
@@ -30,7 +31,7 @@ namespace PoliciesManager
 
         private void FinishDownload(EventArgs e)
         {
-           
+            dataClass = new PolicyController();
 
             string brutPolicies = policies.GetData();
             dataClass.CustomItemRegex(brutPolicies);
@@ -66,6 +67,7 @@ namespace PoliciesManager
             {
                 ElementsListBox.Items.Add(element.Value);
             }
+            
         }
 
         private void Downloading(int progress)
@@ -100,6 +102,19 @@ namespace PoliciesManager
             {
                 ElementsListBox.SetItemChecked(i, check);
             }
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            List<int> indexes = new List<int>();
+            for(int i = 0; i < ElementsListBox.Items.Count; i++)
+            {
+                if(ElementsListBox.GetItemChecked(i))
+                {
+                    indexes.Add(i);
+                }
+            }
+            dataClass.Save(indexes, GlobalSetUp.pathToFile);
         }
     }
 }
