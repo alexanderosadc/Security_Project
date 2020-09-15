@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using PoliciesManager.Features;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,19 +11,21 @@ namespace PoliciesManager.Parser
 {
     public class PolicyController
     {
-        Search policySearch;
-        Parser policyParser;
+        private PolicySearch _policySearch;
+        private PolicyParser _policyParser;
+        private PolicySaver _policySaver;
         private string _textToShow;
 
         public PolicyController()
         {
-            policySearch = new Search();
-            policyParser = new Parser();
+            _policySearch = new PolicySearch();
+            _policyParser = new PolicyParser();
+            _policySaver = new PolicySaver();
         }
 
         public void CustomItemRegex(string data)
         {
-            _textToShow =  policyParser.CustomItemRegex(data);
+            _textToShow =  _policyParser.CustomItemRegex(data);
         }
 
         public string GetJson()
@@ -33,14 +36,23 @@ namespace PoliciesManager.Parser
 
         public Dictionary<int, string> PolicySearch(string input)
         {
-            Dictionary<int, string> dict = policySearch.DisplayPolicies(input);
+            Dictionary<int, string> dict = _policySearch.DisplayPolicies(input);
             return dict;
         }
 
+        public void Save(List<int> selecedIndexes)
+        {
+            _policySaver.SaveToFile(selecedIndexes);
+        }
+
+        public void SaveAs(List<int> selectedIndexes, string policyName)
+        {
+            _policySaver.SaveAsToFile(selectedIndexes, policyName);
+        }
 
         public List<string> GetUniqueTypes()
         {
-            return policySearch.GetUnitTypes();
+            return _policySearch.GetUnitTypes();
         }
     }
 }

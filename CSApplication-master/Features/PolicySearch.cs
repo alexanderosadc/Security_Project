@@ -11,17 +11,15 @@ using System.Threading.Tasks;
 
 namespace PoliciesManager.Parser
 {
-    class Search
+    class PolicySearch
     {
 
-        string json;
         IDictionary<int, Dictionary<string, string>> values;
         Dictionary<int, string> newValues = new Dictionary<int, string>();
 
-        public Search()
+        public PolicySearch()
         {
-            json = File.ReadAllText(GlobalSetUp.JsonPath);
-            values = JsonConvert.DeserializeObject<IDictionary<int, Dictionary<string, string>>>(json);
+            values = GlobalSetUp.JsonDictionary();
         }
 
 

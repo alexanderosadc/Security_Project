@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PoliciesManager.Parser
 {
-    class Parser
+    class PolicyParser
     {
 
         private int _index = 0;
@@ -34,14 +34,18 @@ namespace PoliciesManager.Parser
             List<String> listOfSecond = new List<string>();
             Dictionary<string, string> DictionaryInsider = new Dictionary<string, string>();
 
+            
+
+
+            //File.WriteAllText(GlobalSetUp.UserSavePath, data);
+
             data = ClearStringData(data);
 
 
 
             foreach (Match CustomItem in customItem.Matches(data))
             {
-                string valueType = "";
-                string valueData = "";
+
                 foreach (Match customLine in betweenSpaces.Matches(CustomItem.Value))
                 {
 
@@ -103,6 +107,7 @@ namespace PoliciesManager.Parser
 
 
             File.WriteAllText(GlobalSetUp.JsonPath, json);
+
 
             return textToShow;
         }

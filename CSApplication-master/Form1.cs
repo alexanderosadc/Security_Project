@@ -18,6 +18,7 @@ namespace PoliciesManager
             policies = new DownloadManager();
             EventManager.EventManager.DownloadingInProgress += Downloading;
             EventManager.EventManager.FinishDownloading += FinishDownload;
+
         }
 
         private void checkButton_Click(object sender, EventArgs e)
@@ -31,6 +32,27 @@ namespace PoliciesManager
 
             string brutPolicies = policies.GetData();
             dataClass.CustomItemRegex(brutPolicies);
+
+
+            //test input
+            //List<int> selectedIndexes = new List<int> { 4, 2, 12 };
+            //string test = "Test Policy";
+
+
+            //!!!!!!!!!!!!!!!!!!!!
+            //functia asta face save, aici prosta trimiti indexurile pe care le-ao ales userul. te tip : List <int>
+            //dataClass.Save(selectedIndexex);
+
+
+            //!!!!!!!!!!!!!!!!!
+            //functia asta face aceeasi huinea ca si cea de sus si tot treb list de int. Si mai trebuie numele la document care userul lo ales
+            //path e default : "..\\UserPolicyData\\Save\\.." 
+            //daca stii cum sa faci tipa userul sa aleaga singur ap spune
+
+            //dataClass.SaveAs(selectedIndexes, test);
+
+
+
             Debug.WriteLine("Finished");
             //consoleOutput.Text = dataClass.GetJson();
 
@@ -41,7 +63,6 @@ namespace PoliciesManager
             {
                 ElementsListBox.Items.Add(element.Value);
             }
-
         }
 
         private void Downloading(int progress)
