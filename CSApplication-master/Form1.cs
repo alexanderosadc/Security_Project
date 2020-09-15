@@ -27,20 +27,19 @@ namespace PoliciesManager
 
         private void FinishDownload(EventArgs e)
         {
-            PolicyParser dataClass = new PolicyParser();
+            PolicyController dataClass = new PolicyController();
 
             string brutPolicies = policies.GetData();
             dataClass.CustomItemRegex(brutPolicies);
             Debug.WriteLine("Finished");
             //consoleOutput.Text = dataClass.GetJson();
 
-           Dictionary<string, string> items = dataClass.GetListOfItems();
+            Dictionary<int, string> items = dataClass.PolicySearch(SearchBox.Text);
             Debug.WriteLine("Pidor" + items.Count);
-            foreach (KeyValuePair<string, string> element in items)
+            ElementsListBox.Items.Clear();
+            foreach (KeyValuePair<int, string> element in items)
             {
-                int i = 0;
-                ElementsListBox.Items.Insert(i, element.Key);
-                i++;
+                ElementsListBox.Items.Add(element.Value);
             }
 
         }
@@ -62,9 +61,20 @@ namespace PoliciesManager
 
         private void selectAllButton_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void selectAllSwitch_CheckedChanged(object sender, EventArgs e)
+        {
+            bool check = false;
+            if(selectAllSwitch.Checked)
+            {
+                check = true;
+            }
+            
             for (int i = 0; i < ElementsListBox.Items.Count; i++)
             {
-                ElementsListBox.SetItemChecked(i, !ElementsListBox.GetItemChecked(i));
+                ElementsListBox.SetItemChecked(i, check);
             }
         }
     }
