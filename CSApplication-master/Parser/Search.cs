@@ -15,9 +15,8 @@ namespace PoliciesManager.Parser
 
         string json;
         IDictionary<int, Dictionary<string, string>> values;
-        Dictionary<string, string> insideDic = new Dictionary<string, string>();
+        Dictionary<int, string> newValues = new Dictionary<int, string>();
 
-        Dictionary<int, Dictionary<string, string>> newValues = new Dictionary<int, Dictionary<string, string>>();
         public Search()
         {
             json = File.ReadAllText(GlobalSetUp.JsonPath);
@@ -43,11 +42,12 @@ namespace PoliciesManager.Parser
             return indexes;
         }
 
-        public Dictionary<int, Dictionary<string, string>> DisplayPolicies(string policyToFind)
+        public Dictionary<int, string> DisplayPolicies(string policyToFind)
         {
             List<int> policyIndexs = LoadJson(policyToFind);
-
             newValues.Clear();
+
+            string valueContainer = "";
    
             foreach (var policyNumber in values.Keys)
             {
@@ -55,15 +55,17 @@ namespace PoliciesManager.Parser
                 {
                     foreach (var item in values[policyNumber])
                     {
-                        //insideDic.Add(item.Key, item.Value);
-                        if (item.Key == "info")
+                        if (item.Key == "info" /*|| item.Key == "type"*/)
                         {
-                            insideDic.Add(item.Key, item.Value);
+                            valueContainer += item.Value;
                         }
+                        //valueContainer += "\n";
                     }
 
-                    newValues.Add(policyNumber, insideDic);
-                    insideDic.Clear();
+                    newValues.Add(policyNumber, valueContainer);
+
+                    valueContainer = "";
+    
                 }
             }
 

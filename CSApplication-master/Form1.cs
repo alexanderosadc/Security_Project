@@ -26,26 +26,22 @@ namespace PoliciesManager
 
         private void checkButton_Click(object sender, EventArgs e)
         {
-            //EventManager.EventManager.OnStartDownloading();
 
-            //dataClass.PolicySearch();
             string input = "PASSWORD";
             consoleOutput.Text = dataClass.GetJson();
-            Dictionary<int, Dictionary<string, string>> items = dataClass.PolicySearch(input);
+            Dictionary<int, string> items = dataClass.PolicySearch(input);
 
             Debug.WriteLine("Pidar" + items.Count);
 
-            foreach (var key in items.Keys)
+            foreach (KeyValuePair<int, string> element in items)
             {
-                foreach (var element in items[key])
-                {
-                    int i = 0;
+                int i = 0;
 
-                    ElementsListBox.Items.Insert(i, element.Key);
-                    i++;
-                }
+                ElementsListBox.Items.Insert(i, element.Value);
+                i++;
+
             }
-        }
+            }
 
         private void FinishDownload(EventArgs e)
         {
