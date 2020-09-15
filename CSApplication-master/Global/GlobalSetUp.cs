@@ -11,6 +11,8 @@ namespace PoliciesManager.Global
     public static class GlobalSetUp
     {
         public static readonly String JsonPath = AppDomain.CurrentDomain.BaseDirectory + "Policies.json";
+        public static readonly String LocalPath = AppDomain.CurrentDomain.BaseDirectory + "LocalPolicies.json";
+
         public static String UserSavePath = "..\\UserPolicyData\\Save\\LocalSave.audit";
 
         public static IDictionary<int, Dictionary<string, string>> JsonDictionary()
