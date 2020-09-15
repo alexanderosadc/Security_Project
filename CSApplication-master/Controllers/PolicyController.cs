@@ -40,14 +40,14 @@ namespace PoliciesManager.Parser
             return dict;
         }
 
-        public void Save(List<int> selecedIndexes)
+        public void Save(List<int> selecedIndexes, string curentDir)
         {
-            _policySaver.SaveToFile(selecedIndexes);
+            _policySaver.SaveToFile(selecedIndexes, curentDir);
         }
 
-        public void SaveAs(List<int> selectedIndexes, string policyName)
+        public void SaveAs(List<int> selectedIndexes, string userSelectedDir)
         {
-            _policySaver.SaveAsToFile(selectedIndexes, policyName);
+            _policySaver.SaveAsToFile(selectedIndexes, userSelectedDir);
         }
 
         public List<string> GetUniqueTypes()

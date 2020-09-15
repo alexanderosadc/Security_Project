@@ -20,26 +20,30 @@ namespace PoliciesManager.Features
             values = GlobalSetUp.JsonDictionary();
         }
 
-        public void SaveAsToFile(List<int> selectedIndexes, string policyName)
-        {
-            string _policyString = "";
-
-            _policyString = SettingsInputer(_policyString);
-            _policyString = PolicyToString(selectedIndexes, _policyString);
-
-            File.WriteAllText($"..\\UserPolicyData\\Save\\{policyName}.audit", _policyString);
-        }
-        public void SaveToFile(List<int> selectedIndexes)
+        public void SaveToFile(List<int> selectedIndexes, string curentDir)
         {
 
             string _policyString = "";
 
             _policyString = SettingsInputer(_policyString);
             _policyString = PolicyToString(selectedIndexes, _policyString);
+
+            //File.WriteAllText(curentDir, _policyString);
 
             File.WriteAllText(GlobalSetUp.UserSavePath, _policyString);
 
         }
+        public void SaveAsToFile(List<int> selectedIndexes, string userSelectedDir)
+        {
+            string _policyString = "";
+
+            _policyString = SettingsInputer(_policyString);
+            _policyString = PolicyToString(selectedIndexes, _policyString);
+
+            //File.WriteAllText($"..\\UserPolicyData\\Save\\{policyName}.audit", _policyString);
+            File.WriteAllText(userSelectedDir, _policyString);
+        }
+
 
         private string PolicyToString(List<int> test, string _policyString)
         {

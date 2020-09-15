@@ -69,7 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Data\Policies.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">

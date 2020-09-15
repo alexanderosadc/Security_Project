@@ -36,12 +36,13 @@ namespace PoliciesManager
 
             //test input
             //List<int> selectedIndexes = new List<int> { 4, 2, 12 };
-            //string test = "Test Policy";
+            //string test = $"..\\UserPolicyData\\Save\\aaaassdasfds.audit";
 
 
             //!!!!!!!!!!!!!!!!!!!!
             //functia asta face save, aici prosta trimiti indexurile pe care le-ao ales userul. te tip : List <int>
-            //dataClass.Save(selectedIndexex);
+            //si treb sa trimiti directorul unde este user cand apasa pe save
+            //dataClass.Save(selectedIndexex, curentDir);
 
 
             //!!!!!!!!!!!!!!!!!

@@ -35,10 +35,6 @@ namespace PoliciesManager.Parser
             Dictionary<string, string> DictionaryInsider = new Dictionary<string, string>();
 
             
-
-
-            //File.WriteAllText(GlobalSetUp.UserSavePath, data);
-
             data = ClearStringData(data);
 
 
