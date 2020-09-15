@@ -47,7 +47,7 @@
             this.checkButton.DrawShadows = true;
             this.checkButton.HighEmphasis = true;
             this.checkButton.Icon = null;
-            this.checkButton.Location = new System.Drawing.Point(296, 71);
+            this.checkButton.Location = new System.Drawing.Point(428, 71);
             this.checkButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.checkButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.checkButton.Name = "checkButton";
@@ -62,10 +62,12 @@
             // ElementsListBox
             // 
             this.ElementsListBox.FormattingEnabled = true;
+            this.ElementsListBox.HorizontalScrollbar = true;
             this.ElementsListBox.Location = new System.Drawing.Point(14, 116);
             this.ElementsListBox.Name = "ElementsListBox";
-            this.ElementsListBox.Size = new System.Drawing.Size(359, 199);
+            this.ElementsListBox.Size = new System.Drawing.Size(501, 199);
             this.ElementsListBox.TabIndex = 3;
+            this.ElementsListBox.UseCompatibleTextRendering = true;
             // 
             // SearchBox
             // 
@@ -79,7 +81,7 @@
             this.SearchBox.MouseState = MaterialSkin.MouseState.HOVER;
             this.SearchBox.Name = "SearchBox";
             this.SearchBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.SearchBox.Size = new System.Drawing.Size(274, 32);
+            this.SearchBox.Size = new System.Drawing.Size(408, 32);
             this.SearchBox.TabIndex = 5;
             this.SearchBox.Text = "";
             // 
@@ -87,7 +89,7 @@
             // 
             this.selectAllSwitch.AutoSize = true;
             this.selectAllSwitch.Depth = 0;
-            this.selectAllSwitch.Location = new System.Drawing.Point(251, 318);
+            this.selectAllSwitch.Location = new System.Drawing.Point(392, 318);
             this.selectAllSwitch.Margin = new System.Windows.Forms.Padding(0);
             this.selectAllSwitch.MouseLocation = new System.Drawing.Point(-1, -1);
             this.selectAllSwitch.MouseState = MaterialSkin.MouseState.HOVER;
@@ -141,7 +143,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(386, 390);
+            this.ClientSize = new System.Drawing.Size(543, 390);
             this.Controls.Add(this.SaveAsButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.selectAllSwitch);
