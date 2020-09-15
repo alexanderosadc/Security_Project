@@ -20,12 +20,15 @@ namespace PoliciesManager.Parser
         public PolicySearch()
         {
             values = GlobalSetUp.JsonDictionary();
+           
         }
 
 
         private List<int> LoadJson(string policyToFind)
         {
             List<int> indexes = new List<int>();
+
+            values.Remove(0);
 
             foreach (var key in values.Keys)
             {

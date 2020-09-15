@@ -73,10 +73,12 @@ namespace PoliciesManager.Parser
 
                 foreach (var nw in numbersAndWords)
                 {
+                    
                     try
                     {
                         DictionaryInsider.Add(nw.first, nw.second);
-                        textToShow += nw.first + " : " + nw.second + "\n";
+                        if (_index != 0)
+                            textToShow += nw.first + " : " + nw.second + "\n";
                     }
                     catch
                     {
