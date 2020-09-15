@@ -114,7 +114,15 @@ namespace PoliciesManager
                     indexes.Add(i);
                 }
             }
-            dataClass.Save(indexes, GlobalSetUp.pathToFile);
+            SearchBox.Text = "";
+            selectAllSwitch.Checked = false;
+            checkButton.PerformClick();
+            //dataClass.Save(indexes, GlobalSetUp.pathToFile);
+        }
+
+        private void SaveAsButton_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

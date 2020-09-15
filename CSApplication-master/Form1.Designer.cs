@@ -34,6 +34,7 @@
             this.selectAllSwitch = new MaterialSkin.Controls.MaterialSwitch();
             this.SaveButton = new MaterialSkin.Controls.MaterialButton();
             this.SaveAsButton = new MaterialSkin.Controls.MaterialButton();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // checkButton
@@ -134,6 +135,7 @@
             this.SaveAsButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.SaveAsButton.UseAccentColor = false;
             this.SaveAsButton.UseVisualStyleBackColor = true;
+            this.SaveAsButton.Click += new System.EventHandler(this.SaveAsButton_Click);
             // 
             // Form1
             // 
@@ -163,5 +165,6 @@
         private MaterialSkin.Controls.MaterialSwitch selectAllSwitch;
         private MaterialSkin.Controls.MaterialButton SaveButton;
         private MaterialSkin.Controls.MaterialButton SaveAsButton;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
