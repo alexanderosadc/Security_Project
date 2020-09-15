@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace PoliciesManager
 {
-    public partial class Form1 : MaterialSkin.Controls.MaterialForm
+    public partial class Form1 : MaterialForm
     {
         private DownloadManager policies;
         public Form1()
@@ -32,14 +32,13 @@ namespace PoliciesManager
             string brutPolicies = policies.GetData();
             dataClass.CustomItemRegex(brutPolicies);
             Debug.WriteLine("Finished");
-            consoleOutput.Text = dataClass.GetJson();
+            //consoleOutput.Text = dataClass.GetJson();
 
            Dictionary<string, string> items = dataClass.GetListOfItems();
             Debug.WriteLine("Pidor" + items.Count);
             foreach (KeyValuePair<string, string> element in items)
             {
                 int i = 0;
-                
                 ElementsListBox.Items.Insert(i, element.Key);
                 i++;
             }
@@ -54,6 +53,19 @@ namespace PoliciesManager
         private void applyButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void selectAllButton_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < ElementsListBox.Items.Count; i++)
+            {
+                ElementsListBox.SetItemChecked(i, !ElementsListBox.GetItemChecked(i));
+            }
         }
     }
 }
