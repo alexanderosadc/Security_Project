@@ -1,27 +1,23 @@
 ﻿using Newtonsoft.Json;
+using PoliciesManager.Global;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace PoliciesManager.Parser
 {
-    public class PolicyParser
+    class Parser
     {
-        Dictionary<string, string> elementsFromPolicy = new Dictionary<string, string>();
+
         private int _index = 0;
         private string json;
-        private readonly string pathToJson;
         private string textToShow;
 
-        public PolicyParser()
-        {
-            pathToJson = AppDomain.CurrentDomain.BaseDirectory + "Policies.json";
-        }
-
-        public void CustomItemRegex(string data)
+        public string CustomItemRegex(string data)
         {
             var customItem = new Regex("(?<=<custom_item>)[^>]+(?=</custom_item>)");
             var beforeTwo = new Regex(@"^.*?(?=:)", RegexOptions.Multiline);
@@ -61,17 +57,8 @@ namespace PoliciesManager.Parser
 
                     if (item1.Count == 1)
                     {
-                        firstElement = beforeTwo.Matches(lineString)[0].ToString();
+                        firstElement = beforeTwo.Matches(lineString)[0].ToString().Replace(" ", "");
                         secondElement = afterTwo.Matches(lineString)[0].ToString();
-                        if(firstElement == " value_type ")
-                        {
-                            valueType = secondElement;
-                            
-                        }
-                        else if(firstElement == " value_data ")
-                        {
-                            valueData = secondElement;
-                        }
 
                         listOfFirst.Add(firstElement);
                         listOfSecond.Add(secondElement);
@@ -82,14 +69,8 @@ namespace PoliciesManager.Parser
                     }
                 }
 
-                if (valueData != "" || valueType != "")
-                {
-                    if (!elementsFromPolicy.ContainsKey(valueType))
-                        elementsFromPolicy.Add(valueType, valueData);
-                }
-
                 var numbersAndWords = listOfFirst.Zip(listOfSecond, (n, w) => new { first = n, second = w });
-                
+
                 foreach (var nw in numbersAndWords)
                 {
                     try
@@ -121,7 +102,9 @@ namespace PoliciesManager.Parser
             json = "{" + json + "}";
 
 
-            File.WriteAllText(pathToJson, json);
+            File.WriteAllText(GlobalSetUp.JsonPath, json);
+
+            return textToShow;
         }
 
 
@@ -133,16 +116,6 @@ namespace PoliciesManager.Parser
             text = regex.Replace(text, " ");
 
             return text;
-        }
-
-        public string GetJson()
-        {
-            return textToShow;
-        }
-        
-        public Dictionary<string, string> GetListOfItems()
-        {
-            return elementsFromPolicy;
         }
     }
 }
