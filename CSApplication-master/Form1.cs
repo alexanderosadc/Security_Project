@@ -27,7 +27,7 @@ namespace PoliciesManager
         private void checkButton_Click(object sender, EventArgs e)
         {
 
-            string input = "PASSWORD";
+            string input = "REGISTRY_SETTING";
             consoleOutput.Text = dataClass.GetJson();
             Dictionary<int, string> items = dataClass.PolicySearch(input);
 

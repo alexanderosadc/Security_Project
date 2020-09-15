@@ -12,7 +12,7 @@ namespace PoliciesManager.Parser
     {
         Search policySearch;
         Parser policyParser;
-        private string textToShow;
+        private string _textToShow;
 
         public PolicyController()
         {
@@ -22,12 +22,12 @@ namespace PoliciesManager.Parser
 
         public void CustomItemRegex(string data)
         {
-            textToShow =  policyParser.CustomItemRegex(data);
+            _textToShow =  policyParser.CustomItemRegex(data);
         }
 
         public string GetJson()
         {
-            return textToShow;
+            return _textToShow;
         }
         
 
@@ -37,5 +37,10 @@ namespace PoliciesManager.Parser
             return dict;
         }
 
+
+        public List<string> GetUniqueTypes()
+        {
+            return policySearch.GetUnitTypes();
+        }
     }
 }

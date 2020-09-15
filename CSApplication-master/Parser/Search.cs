@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using PoliciesManager.Global;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -70,7 +71,24 @@ namespace PoliciesManager.Parser
             }
 
             return newValues;
+        }
 
+        public List<string> GetUnitTypes()
+        {
+
+            List<string> uniqueTypes = new List<string>();
+
+            foreach (var policyNumber in values.Keys)
+            {
+         
+                foreach (var item in values[policyNumber])
+                    {
+                    if (item.Key == "type" && !uniqueTypes.Contains(item.Value))
+                        uniqueTypes.Add(item.Value);
+                    }
+            }
+
+            return uniqueTypes;
         }
     }
 }
