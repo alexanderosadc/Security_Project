@@ -4,7 +4,9 @@ using PoliciesManager.Parser;
 using PoliciesManager.Scraper;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace PoliciesManager
@@ -13,14 +15,19 @@ namespace PoliciesManager
     {
         private DownloadManager policies;
         PolicyController dataClass;
+        SaveFileDialog savefile;
+        List<bool> fullListOfIndexes = new List<bool>();
         public Form1()
         {
             InitializeComponent();
-            
 
+
+            
             policies = new DownloadManager();
             EventManager.EventManager.DownloadingInProgress += Downloading;
             EventManager.EventManager.FinishDownloading += FinishDownload;
+            EventManager.EventManager.OnStartDownloading();
+            savefile = new SaveFileDialog();
 
         }
 
@@ -61,7 +68,6 @@ namespace PoliciesManager
             //consoleOutput.Text = dataClass.GetJson();
 
             Dictionary<int, string> items = dataClass.PolicySearch(SearchBox.Text);
-            Debug.WriteLine("Pidor" + items.Count);
             ElementsListBox.Items.Clear();
             foreach (KeyValuePair<int, string> element in items)
             {
@@ -117,12 +123,74 @@ namespace PoliciesManager
             SearchBox.Text = "";
             selectAllSwitch.Checked = false;
             checkButton.PerformClick();
-            //dataClass.Save(indexes, GlobalSetUp.pathToFile);
+            dataClass.Save(indexes, GlobalSetUp.LocalPath);
         }
 
+        private Thread InvokeThread;
         private void SaveAsButton_Click(object sender, EventArgs e)
         {
+            InvokeThread = new Thread(new ThreadStart(OpenSaveAsDialog));
+            InvokeThread.SetApartmentState(ApartmentState.STA);
+            InvokeThread.Start();
+            savefile.FileOk += SaveAs;
+        }
+
+        private void OpenSaveAsDialog()
+        {
+            Debug.Write("Ahtung");
+            savefile.FileName = "policy.json";
+            // set filters - this can be done in properties as well
+            savefile.Filter = "Text files (*.audit)|*.audit|All files (*.*)|*.*";
+            savefile.ShowDialog();
             
+           
+        }
+
+        private void SaveAs(object sender, CancelEventArgs e)
+        {
+            List<int> indexes = new List<int>();
+            for (int i = 0; i < ElementsListBox.Items.Count; i++)
+            {
+                if (ElementsListBox.GetItemChecked(i))
+                {
+                    indexes.Add(i);
+                }
+            }
+            
+            Debug.Write(indexes);
+            dataClass.SaveAs(indexes, savefile.FileName);
+        }
+
+        private void CheckSysButton_Click(object sender, EventArgs e)
+        {
+            Random rand = new Random();
+            for (int i = 0; i < ElementsListBox.Items.Count; i++)
+            {
+                bool boolValue = rand.Next(2) == 1 ? true : false;
+                ElementsListBox.SetItemChecked(i, boolValue);
+                fullListOfIndexes.Add(ElementsListBox.GetItemChecked(i));
+            }
+        }
+
+        private void applyPolicyButton_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Policies Applied", "Policy",
+                                 MessageBoxButtons.OK,
+                                 MessageBoxIcon.Question);
+        }
+
+        private void materialButton1_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < ElementsListBox.Items.Count; i++)
+            {
+                Debug.WriteLine(fullListOfIndexes[i]);
+                ElementsListBox.SetItemChecked(i, fullListOfIndexes[i]);
+            }
+        }
+
+        private void ElementsListBox_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+
         }
     }
 }

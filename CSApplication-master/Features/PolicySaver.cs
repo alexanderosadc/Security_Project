@@ -29,7 +29,7 @@ namespace PoliciesManager.Features
             _policyString = PolicyToString(selectedIndexes, _policyString);
 
             //File.WriteAllText(curentDir, _policyString);
-
+            //File.CreateText(GlobalSetUp.UserSavePath);
             File.WriteAllText(GlobalSetUp.UserSavePath, _policyString);
 
         }

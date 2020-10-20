@@ -13,11 +13,11 @@ namespace PoliciesManager.Global
         public static readonly String JsonPath = AppDomain.CurrentDomain.BaseDirectory + "Policies.json";
         public static readonly String LocalPath = AppDomain.CurrentDomain.BaseDirectory + "LocalPolicies.json";
 
-        public static String UserSavePath = "..\\UserPolicyData\\Save\\LocalSave.audit";
+        public static String UserSavePath = AppDomain.CurrentDomain.BaseDirectory + "LocalSave.audit";
 
         public static IDictionary<int, Dictionary<string, string>> JsonDictionary()
         {
-            string json = File.ReadAllText(GlobalSetUp.JsonPath);
+            string json = File.ReadAllText(JsonPath);
             IDictionary<int, Dictionary<string, string>> values = JsonConvert.DeserializeObject<IDictionary<int, Dictionary<string, string>>>(json);
             return values;
         }
